@@ -39,15 +39,26 @@ export default function Services() {
           {/* ================= Description ================= */}
           <div className="relative  overflow-hidden h-full flex justify-center items-center">
           <div className="relative h-full justify-start items-start text-start">
-          <h1 className=" mb-12 text-white text-[22px] md:text-2xl font-runiga tracking-wider ">
-          <div className=" mb-4  opacity-0 animate-slideUp" style={{ animationDelay: '2s', animationFillMode: 'forwards' }}>
-              <t/>    Mauris cursus mattis molestie a iaculis at erat pellentesque adipiscing. Netus et malesuada fames ac turpis egestas integer eget. A diam maecenas sed enim ut sem viverra aliquet eget. Vel fringilla est ullamcorper eget nulla facilisi etiam. Velit egestas dui id ornare arcu odio ut. Felis donec et odio pellentesque diam volutpat commodo sed egestas. Auctor eu augue ut lectus arcu bibendum at varius. Rhoncus mattis rhoncus urna neque viverra justo nec ultrices.
-          </div>
+          <h1 className="mb-12 text-white text-[22px] md:text-2xl font-runiga tracking-wider">
+  <div
+    className="mb-4 opacity-0 animate-slideUp"
+    style={{ animationDelay: "2s", animationFillMode: "forwards" }}
+  >
+    I’m Nayan Lawalkar, a passionate Full Stack and App Developer with 2+ years of
+    experience building seamless digital experiences. I love solving real-world
+    problems through clean, scalable code and modern technologies.
+  </div>
 
-          <div className="mb-4  opacity-0 animate-slideUp" style={{ animationDelay: '2s', animationFillMode: 'forwards' }}>
-          Aenean euismod elementum nisi quis eleifend. Vitae purus faucibus ornare suspendisse sed nisi lacus. Mattis enim ut tellus elementum sagittis. Lectus quam id leo in vitae turpis. Lobortis scelerisque fermentum dui faucibus in ornare quam.          </div>
-          
-          </h1>
+  <div
+    className="mb-4 opacity-0 animate-slideUp"
+    style={{ animationDelay: "2s", animationFillMode: "forwards" }}
+  >
+    As a UI/UX Designer, I focus on creating interfaces that are not only
+    visually appealing but also intuitive and user-friendly. My goal is to
+    bridge the gap between design and development to deliver impactful products.
+  </div>
+</h1>
+
              
             </div>
           </div>
