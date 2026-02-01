@@ -181,7 +181,7 @@ export default function ExperienceJourney() {
                     ? 'opacity-100 scale-100' 
                     : 'opacity-0 scale-50'
                 }`}
-                style={{ transitionDelay: `${index * 150 + 200}ms` }}>
+                style={{ transitionDelay: `${index * 140 }ms` }}>
                   
                   <div className="relative w-16 h-16 md:w-20 md:h-20">
                     {/* Outer Glow Ring */}

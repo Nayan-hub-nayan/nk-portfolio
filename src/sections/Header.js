@@ -31,7 +31,7 @@ export default function Header() {
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ['hero', 'about', 'team', 'stats', 'contact'];
+      const sections = ['hero', 'about', 'projects', 'experience', 'services','technologies'];
       const current = sections.find(section => {
         const element = document.getElementById(section);
         if (element) {

@@ -55,7 +55,7 @@ export default function Services() {
 
 
   return (
-<div className="relative min-h-screen bg-gradient-to-r from-[#1c1b1b] via-black to-black
+<section id='sevices' className="relative min-h-screen bg-gradient-to-r from-[#1c1b1b] via-black to-black
 overflow-hidden pt-[60px] sm:pt-[140px] md:pt-[160px] lg:pt-[80px] pb-[30px] sm:pb-[60px] md:pb-[60px] 
 shadow-[0_30px_120px_rgba(239,0,0,0.35)]
 
@@ -356,7 +356,7 @@ shadow-[0_30px_120px_rgba(239,0,0,0.35)]
           animation: curtainReveal 1s cubic-bezier(0.65, 0, 0.35, 1) forwards;
         }
       `}</style>
-    </div>
+    </section>
 
     
   );

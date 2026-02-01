@@ -50,7 +50,7 @@ function ReapCapital() {
         <Technologies />
 
         <LatestProject />
-    <ExperienceJourney/>
+      <ExperienceJourney/>
 
         {/* Shutter Transition: Services (top) reveals Footer (bottom) */}
         <ShutterTransition>

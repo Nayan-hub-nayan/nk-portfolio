@@ -41,7 +41,7 @@ export default function Technologies() {
    
 
   return (
-<div className="relative  bg-gradient-to-r from-[#1c1b1b] via-black to-black  overflow-hidden pt-[60px] sm:pt-[140px] md:pt-[160px] lg:pt-[80px] pb-[40px] sm:pb-[110px] md:pb-[110px] lg:pb-[110px]"
+<section id='technologies' className="relative  bg-gradient-to-r from-[#1c1b1b] via-black to-black  overflow-hidden pt-[60px] sm:pt-[140px] md:pt-[160px] lg:pt-[80px] pb-[40px] sm:pb-[110px] md:pb-[110px] lg:pb-[110px]"
    >
     <div className=" relative max-w-[1280px] mx-auto px-2 sm:px-5 md:px-5 lg:px-5 sm:max-w-[810px] md:max-w-[810px] lg:max-w-[1280px]">      
       
@@ -141,7 +141,7 @@ export default function Technologies() {
             `}</style>
 
      
-    </div>
+    </section>
 
     
   );

@@ -1,7 +1,26 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { ArrowRight, Calendar, ChevronDown } from 'lucide-react';
 import { GradientButton } from '../component/Button';
+import { useNavigate } from 'react-router-dom';
 
-const DesignerFooter = () => {
+const Footer = () => {
+  const navigate = new useNavigate()
+  const stats = [
+    { emoji: '🚀', number: '50+', label: 'Projects' },
+    { emoji: '🤝', number: '30+', label: 'Clients' },
+    { emoji: '🌍', number: '15+', label: 'Countries' }
+  ];
+  const scrollToSection = (sectionId) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+  const HandleExplore=()=>{
+    setTimeout(() => {
+      scrollToSection('projects');
+      }, 0);
+  }
   return (
     <footer className="relative flex  w-full h-screen bg-gradient-to-r from-[#1c1b1b] via-black to-black  text-white overflow-hidden flex-col items-center justify-between">
      
@@ -94,30 +113,48 @@ const DesignerFooter = () => {
 
 
       {/* Main Content */}
-      <div className="relative h-screen justify-center flex flex-col z-10 text-center px-8">
-        {/* Small heading */}
-        <div className="relative z-10 text-center px-8">
-
-        <p className="text-lg sm:text-xl md:text-2xl text-gray-400 mb-8 sm:mb-12">
-          Want to work together?
-        </p>
+      <div className="relative z-10 max-w-[1280px] mx-auto px-5 sm:px-5 md:px-5 lg:px-5 w-full">
         
-        {/* Large Email with Red Underline */}
-        <div className="inline-block">
-                 
-         
-        <GradientButton/>
-
+        {/* Top Badge */}
+        <div className="text-center mb-8 opacity-0 animate-fadeIn" style={{ animationDelay: '0.3s', animationFillMode: 'forwards' }}>
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 backdrop-blur-sm">
+            <span className="text-blue-400 text-sm">🚀</span>
+            <span className="text-gray-400 text-sm">Building the Future of Creative Tools</span>
+          </div>
         </div>
+
+        {/* Main Heading */}
+        <h1 className="text-center mb-6 opacity-0 animate-slideUp" style={{ animationDelay: '0.5s', animationFillMode: 'forwards' }}>
+          <div className="text-white text-7xl sm:text-8xl md:text-9xl lg:text-[10rem] font-bold tracking-tight leading-none">
+            Genex
+          </div>
+        </h1>
+
+        {/* Subtitle */}
+        <p className="text-center text-gray-400 text-lg sm:text-xl md:text-2xl max-w-3xl mx-auto mb-12 opacity-0 animate-slideUp" style={{ animationDelay: '0.7s', animationFillMode: 'forwards' }}>
+          Quiet systems for creative chaos. We build tools that balance elegance and precision.
+        </p>
+
+        {/* CTA Buttons */}
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-20 opacity-0 animate-slideUp" style={{ animationDelay: '0.9s', animationFillMode: 'forwards' }}>
+          <button onClick={HandleExplore} className="group relative px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white rounded-full font-medium transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-blue-500/50 flex items-center gap-2">
+            Explore Our Work
+            <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
+          </button>
+          
+          <button onClick={ () => navigate("/contact")} className="px-8 py-4 bg-white/5 hover:bg-white/10 border border-white/10 hover:border-white/20 text-white rounded-full font-medium transition-all duration-300 backdrop-blur-sm flex items-center gap-2">
+            <Calendar size={20} />
+            Book a Schedule
+          </button>
+        </div>
+
+       
+
       </div>
-
-      
-
-        </div>
         <div className='relative w-full text-sm sm:text-xl md:text-[18px] font-runiga text-white md:flex md:justify-between z-10 text-center px-8  mb-8 sm:mb-12'>
-          <h1>nayan@design.com</h1>
-          <h1>©2026</h1>
-          <h1><span className='  text-gray-400'>By    </span>  Nayan Kawalkar</h1>
+          <h1 className='text-blue-900'>nayan@design.com</h1>
+          <h1 >©<span  className='text-blue-900'>2026</span></h1>
+          <h1 className='text-blue-900' ><span className='  text-gray-400'>By    </span >  Nayan Kawalkar</h1>
         </div>
        
 
@@ -179,4 +216,186 @@ const DesignerFooter = () => {
   );
 };
 
-export default DesignerFooter;
+export default Footer;
+
+
+
+//  function HeroSection() {
+//   const [scrollY, setScrollY] = useState(0);
+
+//   useEffect(() => {
+//     const handleScroll = () => setScrollY(window.scrollY);
+//     window.addEventListener('scroll', handleScroll);
+//     return () => window.removeEventListener('scroll', handleScroll);
+//   }, []);
+
+//   const stats = [
+//     { emoji: '🚀', number: '50+', label: 'Projects' },
+//     { emoji: '🤝', number: '30+', label: 'Clients' },
+//     { emoji: '🌍', number: '15+', label: 'Countries' }
+//   ];
+
+//   return (
+//     <div className="relative min-h-screen bg-gradient-to-r from-[#1c1b1b] via-black to-black overflow-hidden flex items-center justify-center">
+      
+//       {/* Video/Image Background with Overlay */}
+//       <div className="absolute inset-0">
+//         {/* Dark texture/pattern overlay */}
+//         <div 
+//           className="absolute inset-0 opacity-40"
+//           style={{
+//             backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`
+//           }}
+//         />
+        
+//         {/* Gradient overlays */}
+//         <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/80" />
+//         <div className="absolute inset-0 bg-gradient-to-r from-blue-900/10 via-transparent to-purple-900/10" />
+//       </div>
+
+//       {/* Main Content */}
+//       <div className="relative z-10 max-w-[1280px] mx-auto px-5 sm:px-5 md:px-5 lg:px-5 w-full">
+        
+//         {/* Top Badge */}
+//         <div className="text-center mb-8 opacity-0 animate-fadeIn" style={{ animationDelay: '0.3s', animationFillMode: 'forwards' }}>
+//           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 backdrop-blur-sm">
+//             <span className="text-blue-400 text-sm">🚀</span>
+//             <span className="text-gray-400 text-sm">Building the Future of Creative Tools</span>
+//           </div>
+//         </div>
+
+//         {/* Main Heading */}
+//         <h1 className="text-center mb-6 opacity-0 animate-slideUp" style={{ animationDelay: '0.5s', animationFillMode: 'forwards' }}>
+//           <div className="text-white text-7xl sm:text-8xl md:text-9xl lg:text-[10rem] font-bold tracking-tight leading-none">
+//             Lasagna
+//           </div>
+//         </h1>
+
+//         {/* Subtitle */}
+//         <p className="text-center text-gray-400 text-lg sm:text-xl md:text-2xl max-w-3xl mx-auto mb-12 opacity-0 animate-slideUp" style={{ animationDelay: '0.7s', animationFillMode: 'forwards' }}>
+//           Quiet systems for creative chaos. We build tools that balance elegance and precision.
+//         </p>
+
+//         {/* CTA Buttons */}
+//         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-20 opacity-0 animate-slideUp" style={{ animationDelay: '0.9s', animationFillMode: 'forwards' }}>
+//           <button className="group relative px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white rounded-full font-medium transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-blue-500/50 flex items-center gap-2">
+//             Explore Our Work
+//             <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
+//           </button>
+          
+//           <button className="px-8 py-4 bg-white/5 hover:bg-white/10 border border-white/10 hover:border-white/20 text-white rounded-full font-medium transition-all duration-300 backdrop-blur-sm flex items-center gap-2">
+//             <Calendar size={20} />
+//             Book a Schedule
+//           </button>
+//         </div>
+
+//         {/* Stats Cards */}
+//         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-4xl mx-auto opacity-0 animate-scaleIn" style={{ animationDelay: '1.1s', animationFillMode: 'forwards' }}>
+//           {stats.map((stat, index) => (
+//             <div
+//               key={index}
+//               className="relative group"
+//               style={{ animationDelay: `${1.2 + index * 0.1}s` }}
+//             >
+//               <div className="relative bg-black/40 backdrop-blur-md border border-white/10 rounded-2xl p-8 text-center hover:bg-black/60 hover:border-white/20 transition-all duration-500 hover:scale-105">
+                
+//                 {/* Glow effect on hover */}
+//                 <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-blue-500/0 to-purple-500/0 group-hover:from-blue-500/10 group-hover:to-purple-500/10 transition-all duration-500" />
+                
+//                 {/* Content */}
+//                 <div className="relative z-10">
+//                   <div className="text-5xl mb-3">{stat.emoji}</div>
+//                   <div className="text-4xl md:text-5xl font-bold text-white mb-2 bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
+//                     {stat.number}
+//                   </div>
+//                   <div className="text-gray-400 text-sm uppercase tracking-wider">
+//                     {stat.label}
+//                   </div>
+//                 </div>
+//               </div>
+//             </div>
+//           ))}
+//         </div>
+
+//         {/* Scroll Indicator */}
+//         <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-0 animate-bounce" style={{ animationDelay: '1.5s', animationFillMode: 'forwards' }}>
+//           <span className="text-gray-500 text-xs uppercase tracking-widest">Scroll</span>
+//           <div className="w-[2px] h-12 bg-gradient-to-b from-white/40 to-transparent" />
+//         </div>
+//       </div>
+
+//       {/* Animated Grid Background */}
+//       <div className="absolute inset-0 opacity-30 pointer-events-none">
+//         <div 
+//           className="absolute inset-0" 
+//           style={{
+//             backgroundImage: `
+//               linear-gradient(to right, rgba(255,255,255,0.03) 1px, transparent 1px),
+//               linear-gradient(to bottom, rgba(255,255,255,0.03) 1px, transparent 1px)
+//             `,
+//             backgroundSize: '80px 80px',
+//             transform: `translateY(${scrollY * 0.5}px)`
+//           }}
+//         />
+//       </div>
+
+//       {/* Radial Glows */}
+//       <div 
+//         className="absolute top-1/4 left-1/4 w-[600px] h-[600px] pointer-events-none"
+//         style={{
+//           background: 'radial-gradient(circle, rgba(59,130,246,0.15) 0%, transparent 70%)',
+//           filter: 'blur(80px)',
+//           animation: 'float 10s ease-in-out infinite'
+//         }}
+//       />
+//       <div 
+//         className="absolute bottom-1/4 right-1/4 w-[600px] h-[600px] pointer-events-none"
+//         style={{
+//           background: 'radial-gradient(circle, rgba(147,51,234,0.15) 0%, transparent 70%)',
+//           filter: 'blur(80px)',
+//           animation: 'float 12s ease-in-out infinite reverse'
+//         }}
+//       />
+
+//       <style jsx>{`
+//         @keyframes fadeIn {
+//           from { opacity: 0; }
+//           to { opacity: 1; }
+//         }
+//         @keyframes slideUp {
+//           from { 
+//             opacity: 0; 
+//             transform: translateY(30px); 
+//           }
+//           to { 
+//             opacity: 1; 
+//             transform: translateY(0); 
+//           }
+//         }
+//         @keyframes scaleIn {
+//           from { 
+//             opacity: 0; 
+//             transform: scale(0.95); 
+//           }
+//           to { 
+//             opacity: 1; 
+//             transform: scale(1); 
+//           }
+//         }
+//         @keyframes float {
+//           0%, 100% { transform: translateY(0px) translateX(0px); }
+//           50% { transform: translateY(-30px) translateX(20px); }
+//         }
+//         .animate-fadeIn {
+//           animation: fadeIn 0.8s ease-out;
+//         }
+//         .animate-slideUp {
+//           animation: slideUp 0.8s ease-out;
+//         }
+//         .animate-scaleIn {
+//           animation: scaleIn 1s ease-out;
+//         }
+//       `}</style>
+//     </div>
+//   );
+// }
