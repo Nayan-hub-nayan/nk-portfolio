@@ -41,13 +41,13 @@ export default function Technologies() {
    
 
   return (
-<div className="relative  bg-gradient-to-r from-[#1c1b1b] via-black to-black  overflow-hidden pt-[140px] sm:pt-[140px] md:pt-[160px] lg:pt-[80px] pb-[110px]"
+<div className="relative  bg-gradient-to-r from-[#1c1b1b] via-black to-black  overflow-hidden pt-[60px] sm:pt-[140px] md:pt-[160px] lg:pt-[80px] pb-[40px] sm:pb-[110px] md:pb-[110px] lg:pb-[110px]"
    >
     <div className=" relative max-w-[1280px] mx-auto px-2 sm:px-5 md:px-5 lg:px-5 sm:max-w-[810px] md:max-w-[810px] lg:max-w-[1280px]">      
       
     
     <h1 className="text-center items-center mb-12">
-          <div className=" underline text-white text-2xl md:text-3xl font-sacrifice tracking-wider mb-4  opacity-0 animate-slideUp" style={{ animationDelay: '2s', animationFillMode: 'forwards' }}>
+          <div className=" underline text-white text-xl md:text-3xl font-sacrifice tracking-wider mb-4  opacity-0 animate-slideUp" style={{ animationDelay: '2s', animationFillMode: 'forwards' }}>
           Tech Stack & Platform
           </div></h1>
           {/* inter: ['Inter', 'sans-serif'],

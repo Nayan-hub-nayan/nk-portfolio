@@ -16,7 +16,7 @@ export default function LatestProject() {
 
 
   return (
-<div className="relative min-h-screen bg-gradient-to-r from-[#1c1b1b] via-black to-black  overflow-hidden pt-[140px] sm:pt-[140px] md:pt-[160px] lg:pt-[80px] pb-[60px]"
+<section id='projects' className="relative min-h-screen bg-gradient-to-r from-[#1c1b1b] via-black to-black  overflow-hidden pt-[60px] sm:pt-[140px] md:pt-[160px] lg:pt-[80px] pb-[20px] sm:pb-[60px] md:pb-[60px] lg:pb-[60px]"
    >
     <div className=" relative max-w-[1280px] mx-auto px-2 sm:px-5 md:px-5 lg:px-5 sm:max-w-[810px] md:max-w-[810px] lg:max-w-[1280px]">      
       
@@ -82,7 +82,7 @@ export default function LatestProject() {
       
 
         <h1 className="text-center mb-12">
-          <div className="text-white text-8xl md:text-9xl font-runiga tracking-wider mb-4  opacity-0 animate-slideUp" style={{ animationDelay: '2s', animationFillMode: 'forwards' }}>
+          <div className="text-white text-6xl md:text-9xl font-runiga tracking-wider mb-4  opacity-0 animate-slideUp" style={{ animationDelay: '2s', animationFillMode: 'forwards' }}>
 Projects          </div></h1>
 
       {/* Furniture Image */}
@@ -1171,7 +1171,7 @@ Projects          </div></h1>
           animation: curtainReveal 1s cubic-bezier(0.65, 0, 0.35, 1) forwards;
         }
       `}</style>
-    </div>
+    </section>
 
     
   );

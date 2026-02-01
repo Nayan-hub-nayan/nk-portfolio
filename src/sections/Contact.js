@@ -1,180 +1,504 @@
-import React, { useEffect, useRef } from 'react';
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import React, { useState, useEffect } from 'react';
+import { Code2, Database, Globe, Terminal, CheckCircle, Send } from 'lucide-react';
 
-gsap.registerPlugin(ScrollTrigger);
-
-export default function ShutterTransition() {
-  const containerRef = useRef(null);
-  const shutterRef = useRef(null);
+export default function Contact() {
+  const [errors, setErrors] = useState({});
+  const [isLoading, setIsLoading] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
 
   useEffect(() => {
-    const container = containerRef.current;
-    const shutter = shutterRef.current;
+    window.scrollTo(0, 0);
+  }, []);
 
-    // Shutter pulls up to reveal bottom page - slower with more scroll distance
-    gsap.to(shutter, {
-      yPercent: -100,
-      ease: 'none',
-      scrollTrigger: {
-        trigger: container,
-        start: 'top top',
-        end: '+=200%', // Increased scroll distance for slower reveal
-        scrub: 2, // Increased scrub for smoother, more responsive feel
-        pin: true,
-        anticipatePin: 1,
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    company: '',
+    projectType: '',
+    message: ''
+  });
+
+  const [showSuccessMessage, setShowSuccessMessage] = useState(false);
+
+  const handleInputChange = (e) => {
+    setIsSubmitted(false);
+    setIsLoading(false);
+
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const inputs = e.currentTarget.parentElement.querySelectorAll('input, select, textarea');
+    let isValid = true;
+
+    inputs.forEach(input => {
+      if (!input.validity.valid) {
+        isValid = false;
+        input.reportValidity();
       }
     });
 
-    return () => {
-      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
-    };
+    if (!isValid) return;
+
+    setIsLoading(true);
+
+    try {
+      const templateParams = {
+        from_name: 'Portfolio Contact',
+        to_email: 'your-email@example.com', // Replace with your email
+        subject: "New Project Inquiry from Portfolio",
+        name: formData.name,
+        email: formData.email,
+        phone: formData.phone,
+        company: formData.company,
+        project_type: formData.projectType,
+        message: formData.message,
+        full_message: `Name: ${formData.name}
+Email: ${formData.email}
+Phone: ${formData.phone}
+Company: ${formData.company}
+Project Type: ${formData.projectType}
+Message: ${formData.message}`
+      };
+
+      const response = await fetch('https://api.emailjs.com/api/v1.0/email/send', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          service_id: 'YOUR_SERVICE_ID', // Replace with your EmailJS Service ID
+          template_id: 'YOUR_TEMPLATE_ID', // Replace with your EmailJS Template ID
+          user_id: 'YOUR_PUBLIC_KEY', // Replace with your EmailJS Public Key
+          template_params: templateParams
+        })
+      });
+
+      if (response.ok) {
+        setIsLoading(false);
+        setIsSubmitted(true);
+        setShowSuccessMessage(true);
+        
+        setTimeout(() => {
+          setShowSuccessMessage(false);
+        }, 5000);
+        
+        setTimeout(() => {
+          setFormData({
+            name: '',
+            email: '',
+            phone: '',
+            company: '',
+            projectType: '',
+            message: ''
+          });
+          setIsSubmitted(false);
+        }, 6000);
+      } else {
+        throw new Error('Failed to send email');
+      }
+    } catch (error) {
+      console.error('Error sending email:', error);
+      setIsLoading(false);
+      alert('Failed to submit form. Please try again.');
+    }
+  };
+
+  const [letterStates, setLetterStates] = useState([]);
+  const [loaded, setLoaded] = useState(false);
+  const TEXT = "Let's Build Something Extraordinary Together";
+
+  useEffect(() => {
+    const letters = TEXT.split('');
+    setLetterStates(new Array(letters.length).fill(false));
+    setTimeout(() => setLoaded(true), 100);
+
+    letters.forEach((_, index) => {
+      setTimeout(() => {
+        setLetterStates(prev => {
+          const newState = [...prev];
+          newState[index] = true;
+          return newState;
+        });
+      }, 500 + index * 40);
+    });
   }, []);
 
+  const renderAnimatedText = (text, startIndex = 0) => {
+    const words = text.split(" ");
+    let globalIndex = startIndex;
+
+    return words.map((word, wIndex) => {
+      return (
+        <span key={wIndex} className="inline-block mr-[0.3em]">
+          {word.split("").map((letter, lIndex) => {
+            const index = globalIndex++;
+            return (
+              <span
+                key={lIndex}
+                className={`inline-block transition-all duration-500 ${
+                  letterStates[index]
+                    ? "opacity-100 blur-0 translate-y-0"
+                    : "opacity-0 blur-md translate-y-4"
+                }`}
+              >
+                {letter}
+              </span>
+            );
+          })}
+        </span>
+      );
+    });
+  };
+
   return (
-    <div className="w-full bg-black">
-      {/* Hero Section */}
-      <div className="h-screen bg-gradient-to-b from-indigo-900 via-purple-900 to-black flex items-center justify-center">
-        <div className="text-center text-white px-8">
-          <div className="inline-block px-6 py-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-sm mb-8">
-            SCROLL DOWN
-          </div>
-          <h1 className="text-7xl md:text-9xl font-bold mb-8 tracking-tight">
-            Shutter
-          </h1>
-          <p className="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
-            Watch the page lift up like a curtain
-          </p>
-          <div className="mt-12 animate-bounce">
-            <svg
-              className="w-8 h-8 mx-auto"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M19 14l-7 7m0 0l-7-7m7 7V3"
-              />
-            </svg>
-          </div>
-        </div>
-      </div>
+    <>
+      <div className="min-h-screen bg-black relative overflow-hidden">
+        <style>{`
+          @keyframes slideDownBg {
+            from {
+              transform: translateY(-30%);
+            }
+            to {
+              transform: translateY(0);
+            }
+          }
 
-      {/* Shutter Transition Container */}
-      <div ref={containerRef} className="relative h-screen">
-        {/* Bottom Page - Always visible underneath */}
-        <div className="absolute inset-0 h-screen w-full bg-black">
-          <div className="h-full flex items-center justify-center relative overflow-hidden">
-            {/* Background pattern */}
-            <div className="absolute inset-0">
-              <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/20 via-blue-500/20 to-purple-500/20"></div>
-              <div className="absolute top-0 left-0 w-full h-full" 
-                   style={{
-                     backgroundImage: `radial-gradient(circle at 2px 2px, rgba(255,255,255,0.05) 1px, transparent 0)`,
-                     backgroundSize: '50px 50px'
-                   }}>
-              </div>
-            </div>
+          @keyframes floatIn {
+            from {
+              transform: translateY(30px);
+              opacity: 0;
+            }
+            to {
+              transform: translateY(0);
+              opacity: 1;
+            }
+          }
 
-            {/* Content */}
-            <div className="text-center text-white px-8 z-10 max-w-6xl mx-auto">
-              <h2 className="text-6xl md:text-9xl font-bold mb-12 tracking-tight">
-                <span className="bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 bg-clip-text text-transparent">
-                  Revealed
-                </span>
-              </h2>
-              
-              <p className="text-2xl md:text-3xl text-gray-300 mb-16 max-w-3xl mx-auto">
-                The hidden page emerges as the shutter lifts away
-              </p>
+          @keyframes pulse {
+            0%, 100% {
+              opacity: 1;
+            }
+            50% {
+              opacity: 0.5;
+            }
+          }
 
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-16">
-                <div className="group p-8 rounded-2xl bg-gradient-to-br from-cyan-500/10 to-blue-500/10 border border-cyan-500/20 backdrop-blur-sm hover:border-cyan-500/40 transition-all duration-300">
-                  <div className="text-5xl mb-6">🎭</div>
-                  <h3 className="text-2xl font-bold mb-3 text-cyan-400">Dramatic</h3>
-                  <p className="text-gray-400">Unveil content with impact</p>
-                </div>
-                
-                <div className="group p-8 rounded-2xl bg-gradient-to-br from-blue-500/10 to-purple-500/10 border border-blue-500/20 backdrop-blur-sm hover:border-blue-500/40 transition-all duration-300">
-                  <div className="text-5xl mb-6">🎬</div>
-                  <h3 className="text-2xl font-bold mb-3 text-blue-400">Cinematic</h3>
-                  <p className="text-gray-400">Smooth reveal motion</p>
-                </div>
-                
-                <div className="group p-8 rounded-2xl bg-gradient-to-br from-purple-500/10 to-pink-500/10 border border-purple-500/20 backdrop-blur-sm hover:border-purple-500/40 transition-all duration-300">
-                  <div className="text-5xl mb-6">✨</div>
-                  <h3 className="text-2xl font-bold mb-3 text-purple-400">Elegant</h3>
-                  <p className="text-gray-400">Professional transition</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+          @keyframes float {
+            0%, 100% {
+              transform: translateY(0px);
+            }
+            50% {
+              transform: translateY(-20px);
+            }
+          }
 
-        {/* Top Page - Shutter that lifts up */}
-        <div
-          ref={shutterRef}
-          className="absolute inset-0 h-screen w-full z-10"
-        >
-          <div className="h-full w-full bg-gradient-to-br from-rose-600 via-pink-600 to-orange-600 flex items-center justify-center relative overflow-hidden">
-            {/* Decorative elements */}
-            <div className="absolute inset-0">
-              <div className="absolute top-1/3 left-1/4 w-96 h-96 bg-white/10 rounded-full blur-3xl animate-pulse"></div>
-              <div className="absolute bottom-1/3 right-1/4 w-96 h-96 bg-white/10 rounded-full blur-3xl animate-pulse" style={{animationDelay: '1s'}}></div>
-            </div>
+          .hero-bg-animate {
+            animation: slideDownBg 1s ease-out;
+          }
 
-            {/* Content */}
-            <div className="text-center text-white px-8 z-10">
-              <div className="mb-8">
-                <div className="inline-block px-6 py-2 rounded-full bg-white/20 backdrop-blur-sm border border-white/30 text-sm mb-8 font-semibold">
-                  TOP LAYER
-                </div>
-              </div>
-              <h2 className="text-6xl md:text-8xl font-bold mb-6 tracking-tight drop-shadow-2xl">
-                Cover Page
-              </h2>
-              <p className="text-xl md:text-2xl opacity-90 max-w-2xl mx-auto drop-shadow-lg">
-                Scroll to lift this page and reveal what's underneath
-              </p>
+          .text-float {
+            animation: floatIn 0.8s ease-out;
+          }
 
-              {/* Visual indicator */}
-              <div className="mt-16 flex items-center justify-center gap-4">
-                <div className="w-12 h-1 bg-white/40 rounded-full"></div>
-                <div className="w-12 h-1 bg-white/60 rounded-full"></div>
-                <div className="w-12 h-1 bg-white/80 rounded-full"></div>
-                <div className="w-12 h-1 bg-white rounded-full"></div>
-              </div>
-            </div>
+          .button-animate {
+            animation: floatIn 1s ease-out 2s both;
+          }
 
-            {/* Bottom edge shadow for depth */}
-            <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-black/30 to-transparent pointer-events-none"></div>
-          </div>
-        </div>
-      </div>
+          .neon-border {
+            box-shadow: 
+              0 0 5px rgba(59, 130, 246, 0.5),
+              0 0 10px rgba(59, 130, 246, 0.3),
+              inset 0 0 15px rgba(59, 130, 246, 0.1);
+          }
 
-      {/* Continue Content */}
-      <div className="min-h-screen bg-black flex items-center justify-center border-t border-gray-800">
-        <div className="text-center text-white px-8 py-20">
-          <h3 className="text-5xl md:text-7xl font-bold mb-8">
-            Smooth Reveal
-          </h3>
-          <p className="text-xl text-gray-400 mb-12 max-w-2xl mx-auto">
-            The shutter transition creates a layered effect, making your content feel dimensional and engaging
-          </p>
+          .neon-border:hover {
+            box-shadow: 
+              0 0 10px rgba(59, 130, 246, 0.8),
+              0 0 20px rgba(59, 130, 246, 0.5),
+              inset 0 0 20px rgba(59, 130, 246, 0.2);
+          }
+
+          .code-icon {
+            animation: float 3s ease-in-out infinite;
+          }
+
+          .grid-pattern {
+            background-image: 
+              linear-gradient(rgba(59, 130, 246, 0.1) 1px, transparent 1px),
+              linear-gradient(90deg, rgba(59, 130, 246, 0.1) 1px, transparent 1px);
+            background-size: 50px 50px;
+          }
+
+          @keyframes slideDown {
+            from {
+              transform: translateY(-100%);
+              opacity: 0;
+            }
+            to {
+              transform: translateY(0);
+              opacity: 1;
+            }
+          }
+
           
-          <div className="flex flex-wrap gap-6 justify-center">
-            <button className="px-8 py-4 bg-gradient-to-r from-cyan-500 to-blue-600 text-white rounded-full font-semibold hover:shadow-lg hover:shadow-cyan-500/50 transition-all">
-              Experience More
-            </button>
-            <button className="px-8 py-4 border border-gray-600 text-white rounded-full font-semibold hover:border-gray-400 transition-colors">
-              Learn How
-            </button>
+        `}</style>
+
+        {/* Main Content */}
+        <section id="contact" className="w-full h-fit bg-black overflow-hidden relative">
+          <div style={{
+  width: "100%",
+  height: "100%",
+  background:
+    "radial-gradient(ellipse at top center, #1a2a6c 0%, #000 100%)",
+}}
+
+            className="
+              w-full h-fit
+              
+              rounded-bl-[60px] rounded-br-[60px]
+              overflow-hidden relative hero-bg-animate
+              pl-[12px] pr-[12px]
+              pt-[160px] pb-[60px]
+              sm:pl-[12px] sm:pr-[12px] sm:pt-[140px] sm:pb-[120px]
+              md:pl-[30px] md:pr-[28px] md:pt-[170px] md:pb-[80px]
+              lg:pt-[170px] lg:pb-[80px] lg:pl-[0px] lg:pr-[0px] lg:rounded-bl-[50px] lg:rounded-br-[50px]
+            "
+          >
+          
+            {/* Grid Pattern Background */}
+            <div className="absolute inset-0 grid-pattern opacity-30"></div>
+
+            <div className="max-w-[1280px] mx-auto px-2.5 sm:px-2 md:px-2 lg:px-10 relative z-10 text-center md:text-left">
+              <div className="grid sm:grid md:grid lg:grid-cols-[1fr_auto] gap-12 items-stretch">
+                
+                {/* Left Side */}
+                <div className="text-white w-full mt-0 lg:mt-14">
+                  <h1 className="text-[34px] md:text-[43px] font-inter lg:text-[53px] leading-tight font-bold max-w-[681px] md:max-w-[680px] lg:max-w-[1280px] mb-6 tracking-[-1.44px]">
+                    {renderAnimatedText("Let's Build Something Extraordinary Together", 0)}
+                  </h1>
+
+                  <div className="space-y-4 mt-8">
+                    {/* Service Items */}
+                    <div className="flex items-center w-full text-left gap-3">
+                      <div className="w-12 h-12 rounded-lg bg-blue-500/20 flex items-center justify-center border border-blue-500/50">
+                        <Code2 className="text-blue-400 w-6 h-6" />
+                      </div>
+                      <p className="text-gray-300 text-base sm:text-lg md:text-lg lg:text-lg w-full text-left font-inter">
+                        Full-Stack Development & Architecture
+                      </p>
+                    </div>
+
+                    <div className="flex items-center w-full text-left gap-3">
+                      <div className="w-12 h-12 rounded-lg bg-purple-500/20 flex items-center justify-center border border-purple-500/50">
+                        <Database className="text-purple-400 w-6 h-6" />
+                      </div>
+                      <p className="text-gray-300 text-base sm:text-lg md:text-lg lg:text-lg w-full text-left font-inter">
+                        Cloud Solutions & DevOps
+                      </p>
+                    </div>
+
+                    <div className="flex items-center w-full text-left gap-3">
+                      <div className="w-12 h-12 rounded-lg bg-cyan-500/20 flex items-center justify-center border border-cyan-500/50">
+                        <Globe className="text-cyan-400 w-6 h-6" />
+                      </div>
+                      <p className="text-gray-300 text-base sm:text-lg md:text-lg lg:text-lg w-full text-left font-inter">
+                        Custom Web & Mobile Applications
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Right Side - Form */}
+                <div className="w-full flex justify-start items-start md:justify-end">
+                  
+                  {/* Success Message Popup */}
+                  {showSuccessMessage && (
+                    <div className="fixed top-24 left-15 sm:top-30 sm:left-15 md:top-20 md:left-28 lg:top-20 lg:left-1/3 transform -translate-x-1/2 z-50 animate-slideDown">
+                      <div className="bg-gray-900 border border-blue-500/50 rounded-2xl shadow-2xl px-4 py-3 sm:px-6 sm:py-4 flex items-start sm:items-center gap-3 font-inter">
+                        <div className="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center flex-shrink-0">
+                          <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
+                          </svg>
+                        </div>
+                        <span className="text-gray-100 font-medium text-sm sm:text-base leading-snug font-inter">
+                          Message sent successfully! I'll get back to you soon.
+                        </span>
+                      </div>
+                    </div>
+                  )}
+
+                  <div className="bg-gray-900/80 backdrop-blur-sm border border-blue-500/30 rounded-3xl p-5 shadow-xl w-full max-w-[1280px] md:max-w-[1280px] lg:max-w-[510px] neon-border">
+                    <h2 className="text-[18px] font-semibold font-inter text-white mb-4 text-left flex items-center gap-2">
+                      <Terminal className="w-5 h-5 text-blue-400" />
+                      Get In Touch
+                    </h2>
+
+                    <div className="space-y-3 flex flex-col gap-2">
+                      <div className="flex gap-3">
+                        {/* Name */}
+                        <input
+                          type="text"
+                          name="name"
+                          placeholder="Your Name"
+                          value={formData.name}
+                          onChange={handleInputChange}
+                          required
+                          pattern="^[A-Za-z ]+$"
+                          onInvalid={(e) => e.target.setCustomValidity("Please fill in this field.")}
+                          onInput={(e) => e.target.setCustomValidity("")}
+                          className="w-full px-3 py-3 bg-black/50 border border-gray-700 rounded-xl 
+                                     focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none 
+                                     text-white font-medium text-[16px] font-inter placeholder-gray-500"
+                        />
+
+                        {/* Phone */}
+                        <input
+                          type="tel"
+                          name="phone"
+                          placeholder="Phone Number"
+                          value={formData.phone}
+                          onChange={handleInputChange}
+                          required
+                          pattern="^[0-9]{10}$"
+                          onInvalid={(e) => e.target.setCustomValidity("Please enter a valid 10-digit phone number.")}
+                          onInput={(e) => e.target.setCustomValidity("")}
+                          className="w-full px-3 py-3 bg-black/50 border border-gray-700 rounded-xl 
+                                     focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none 
+                                     text-white font-medium text-[16px] font-inter placeholder-gray-500"
+                        />
+                      </div>
+
+                      {/* Email */}
+                      <input
+                        type="email"
+                        name="email"
+                        placeholder="Email Address"
+                        value={formData.email}
+                        onChange={handleInputChange}
+                        required
+                        onInvalid={(e) => e.target.setCustomValidity("Please enter a valid email address.")}
+                        onInput={(e) => e.target.setCustomValidity("")}
+                        className="w-full px-3 py-3 bg-black/50 border border-gray-700 rounded-xl 
+                                   focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none 
+                                   text-white font-medium text-[16px] font-inter placeholder-gray-500"
+                      />
+
+                      {/* Company */}
+                      <input
+                        type="text"
+                        name="company"
+                        placeholder="Company Name (Optional)"
+                        value={formData.company}
+                        onChange={handleInputChange}
+                        className="w-full px-3 py-3 bg-black/50 border border-gray-700 rounded-xl 
+                                   focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none 
+                                   text-white font-medium text-[16px] font-inter placeholder-gray-500"
+                      />
+
+                      {/* Project Type */}
+                      <select
+                        name="projectType"
+                        value={formData.projectType}
+                        onChange={handleInputChange}
+                        required
+                        onInvalid={(e) => e.target.setCustomValidity("Please select a project type.")}
+                        onInput={(e) => e.target.setCustomValidity("")}
+                        className="w-full px-3 py-3 bg-black/50 border border-gray-700 rounded-xl
+                                   focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none 
+                                   text-white font-medium appearance-none cursor-pointer text-[16px] font-inter"
+                        style={{
+                          backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'%3E%3Cpath d='M5 7.5L10 12.5L15 7.5' stroke='%239CA3AF' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E")`,
+                          backgroundRepeat: "no-repeat",
+                          backgroundPosition: "right 1.25rem center",
+                        }}
+                      >
+                        <option value="">Select Project Type</option>
+                        <option value="Web Development">Web Development</option>
+                        <option value="Mobile App">Mobile App</option>
+                        <option value="Backend/API">Backend/API</option>
+                        <option value="DevOps/Cloud">DevOps/Cloud</option>
+                        <option value="Consulting">Consulting</option>
+                        <option value="Other">Other</option>
+                      </select>
+
+                      {/* Message */}
+                      <textarea
+                        name="message"
+                        placeholder="Tell me about your project..."
+                        value={formData.message}
+                        onChange={handleInputChange}
+                        required
+                        rows="4"
+                        onInvalid={(e) => e.target.setCustomValidity("Please tell me about your project.")}
+                        onInput={(e) => e.target.setCustomValidity("")}
+                        className="w-full px-3 py-3 bg-black/50 border border-gray-700 rounded-xl 
+                                   focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none 
+                                   text-white font-medium text-[16px] font-inter placeholder-gray-500 resize-none"
+                      />
+
+                      {/* Submit Button */}
+                      <button
+                        onClick={handleSubmit}
+                        disabled={isLoading || isSubmitted}
+                        className={`
+                          w-full bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-500 hover:to-blue-600
+                          transition-all duration-300 cursor-pointer z-20 
+                          text-white font-semibold text-lg py-4 rounded-[18px] mt-2 
+                          flex items-center justify-center gap-2
+                          shadow-lg hover:shadow-blue-500/50
+                          ${isLoading ? "cursor-wait opacity-70" : ""}
+                          ${isSubmitted ? "bg-green-600 hover:bg-green-600" : ""}
+                        `}
+                      >
+                        {isLoading ? (
+                          <div className="animate-spin h-6 w-6 border-2 border-white border-t-transparent rounded-full"></div>
+                        ) : isSubmitted ? (
+                          <>
+                            <CheckCircle className="w-5 h-5" />
+                            <span>Message Sent!</span>
+                          </>
+                        ) : (
+                          <>
+                            <Send className="w-5 h-5" />
+                            <span>Send Message</span>
+                          </>
+                        )}
+                      </button>
+
+                      <p className="text-[14px] font-medium text-gray-400 leading-normal mt-4 text-left font-inter">
+                        I typically respond within 24 hours. Your information is kept confidential and will never be shared.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Decorative Floating Icons */}
+            <div className="absolute top-20 left-10 opacity-20 code-icon" style={{ animationDelay: '0s' }}>
+              <Code2 className="w-24 h-24 text-blue-400" />
+            </div>
+            <div className="absolute bottom-20 right-10 opacity-20 code-icon" style={{ animationDelay: '1s' }}>
+              <Terminal className="w-32 h-32 text-purple-400" />
+            </div>
+            <div className="absolute top-1/2 right-20 opacity-20 code-icon" style={{ animationDelay: '2s' }}>
+              <Database className="w-20 h-20 text-cyan-400" />
+            </div>
+            <div className="absolute bottom-32 left-20 opacity-20 code-icon" style={{ animationDelay: '1.5s' }}>
+              <Globe className="w-28 h-28 text-blue-300" />
+            </div>
           </div>
-        </div>
+          
+      
+        </section>
       </div>
-    </div>
+    </>
   );
 }

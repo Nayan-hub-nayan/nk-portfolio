@@ -5,6 +5,7 @@
 
 import React, { useEffect } from 'react';
 import Hero from './sections/Hero';
+import ExperienceJourney from './sections/Experience';
 import Footer from './sections/Footer';
 import Header from './sections/Header';
 import AnimatedPortfolio from "./pages/Testpage";
@@ -28,19 +29,7 @@ import { ScrollSmoother } from 'gsap/ScrollSmoother';
 gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
 
 function ReapCapital() {
-  useEffect(() => {
-    // Enable smooth scrolling for the entire page
-    const smoother = ScrollSmoother.create({
-      smooth: 1.5, // Smoothness level (higher = smoother)
-      effects: true,
-      smoothTouch: 0.1, // Smooth scrolling on mobile
-    });
-
-    return () => {
-      smoother.kill();
-    };
-  }, []);
-
+ 
   return (
     <div 
       id="smooth-wrapper"
@@ -61,13 +50,15 @@ function ReapCapital() {
         <Technologies />
 
         <LatestProject />
-
+    <ExperienceJourney/>
 
         {/* Shutter Transition: Services (top) reveals Footer (bottom) */}
         <ShutterTransition>
           <Services />
           <Footer />
         </ShutterTransition>
+         {/* Shutter Transition Container */}
+     
       </div>
     </div>
   );

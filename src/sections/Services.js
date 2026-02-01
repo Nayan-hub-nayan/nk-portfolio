@@ -56,7 +56,7 @@ export default function Services() {
 
   return (
 <div className="relative min-h-screen bg-gradient-to-r from-[#1c1b1b] via-black to-black
-overflow-hidden pt-[140px] sm:pt-[140px] md:pt-[160px] lg:pt-[80px] pb-[60px]
+overflow-hidden pt-[60px] sm:pt-[140px] md:pt-[160px] lg:pt-[80px] pb-[30px] sm:pb-[60px] md:pb-[60px] 
 shadow-[0_30px_120px_rgba(239,0,0,0.35)]
 
 
@@ -79,7 +79,7 @@ shadow-[0_30px_120px_rgba(239,0,0,0.35)]
           
 
 <div className='flex flex-col gap-8'>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4  sm:gap-8 md:gap-8 items-stretch">
           
           {/* ================= CARD 1 ================= */}
           <div className='flex flex-col gap-8'>
@@ -104,7 +104,7 @@ shadow-[0_30px_120px_rgba(239,0,0,0.35)]
             </div>
           </div>
           <h1 className="text-center items-center mb-12">
-          <div className="text-white text-2xl md:text-xl font-sacrifice tracking-wider mb-4  opacity-0 animate-slideUp" style={{ animationDelay: '2s', animationFillMode: 'forwards' }}>
+          <div className="text-white text-xl md:text-xl font-sacrifice tracking-wider mb-4  opacity-0 animate-slideUp" style={{ animationDelay: '2s', animationFillMode: 'forwards' }}>
           
           <div><del>₹1,50,000</del><t/>    ₹1,20,000</div>
 
@@ -152,7 +152,7 @@ shadow-[0_30px_120px_rgba(239,0,0,0.35)]
           </div>
           {/* CONTENT */}
           <h1 className="text-center items-center mb-12">
-          <div className="text-white text-2xl md:text-xl font-sacrifice tracking-wider mb-4  opacity-0 animate-slideUp" style={{ animationDelay: '2s', animationFillMode: 'forwards' }}>
+          <div className="text-white text-xl md:text-xl font-sacrifice tracking-wider mb-4  opacity-0 animate-slideUp" style={{ animationDelay: '2s', animationFillMode: 'forwards' }}>
           
           <div><del>₹1,00,000</del><t/>    ₹70,000</div>
           <div>Website</div>
@@ -202,7 +202,7 @@ shadow-[0_30px_120px_rgba(239,0,0,0.35)]
             </div>
           </div>
           <h1 className="text-center items-center mb-12">
-          <div className="text-white text-2xl md:text-xl font-sacrifice tracking-wider mb-4  opacity-0 animate-slideUp" style={{ animationDelay: '2s', animationFillMode: 'forwards' }}>
+          <div className="text-white text-xl md:text-xl font-sacrifice tracking-wider mb-4  opacity-0 animate-slideUp" style={{ animationDelay: '2s', animationFillMode: 'forwards' }}>
           
           <div>  ₹30,000</div>
           <div>AI Agents</div>

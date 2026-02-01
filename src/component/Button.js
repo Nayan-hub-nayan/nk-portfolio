@@ -1,8 +1,9 @@
 import React, { useState, useRef } from 'react';
-
+import { useNavigate } from 'react-router-dom';
 export  function GradientButton() {
   const [mousePosition, setMousePosition] = useState({ x: 50, y: 50 });
   const buttonRef = useRef(null);
+  const navigate = new useNavigate()
 
   const handleMouseMove = (e) => {
     if (!buttonRef.current) return;
@@ -18,6 +19,11 @@ export  function GradientButton() {
     setMousePosition({ x: 50, y: 50 });
   };
 
+  const clickHandle =()=>{
+    navigate("/contact")
+
+  }
+
   return (
       <div className="relative">
         {/* Sparkle effects */}
@@ -29,6 +35,7 @@ export  function GradientButton() {
 
         <button
           ref={buttonRef}
+          onClick={clickHandle}
           onMouseMove={handleMouseMove}
           onMouseLeave={handleMouseLeave}
           className="relative px-12 py-4 rounded-full text-white text-lg font-light tracking-[0.3em] overflow-hidden transition-all duration-300 hover:scale-105"

@@ -1,10 +1,16 @@
 import React, { useState, useEffect } from 'react';
-
+import {  useNavigate } from 'react-router-dom';
+import logo1 from '../assets/logos/logo.png';
+import logo2 from '../assets/logos/logo2.png';
 export default function Header() {
+  const navigate = new useNavigate();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [activeSection, setActiveSection] = useState('home');
+  const [activeSection, setActiveSection] = useState('hero');
   const [isLoading, setIsLoading] = useState(true);
   const [showCurtain, setShowCurtain] = useState(true);
+
+ 
+  
 
   useEffect(() => {
     // Show plain logo for 1 second
@@ -25,7 +31,7 @@ export default function Header() {
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ['home', 'about', 'team', 'stats', 'contact'];
+      const sections = ['hero', 'about', 'team', 'stats', 'contact'];
       const current = sections.find(section => {
         const element = document.getElementById(section);
         if (element) {
@@ -48,6 +54,21 @@ export default function Header() {
       setIsMenuOpen(false);
     }
   };
+  const goToContact = () => {
+    navigate('/contact');
+    setTimeout(() => {
+    scrollToSection('contact');
+    }, 0);
+    };
+
+  const goToHero = () => {
+      navigate('/');
+      setTimeout(() => {
+      scrollToSection('hero');
+      }, 0);
+      };
+
+
 
   return (
     <>
@@ -114,21 +135,24 @@ export default function Header() {
         </div>
       )}
 
-      <nav className="fixed w-full flex items-center justify-between px-2 py-4 z-50 transition-all duration-300 backdrop-blur-sm bg-white/0 opacity-0 animate-slideDown">
+      <nav className=" fixed w-full flex items-center justify-between px-2 py-4 z-50 transition-all duration-300 backdrop-blur-sm bg-white/0 opacity-0 animate-slideDown">
         <div className="flex items-center space-x-2 cursor-pointer z-50" onClick={() => scrollToSection('home')}>
-          <button 
-            onClick={() => scrollToSection('hero')}
-            className="text-white text-sm tracking-wider hover:text-yellow-500 transition-colors"
-          >
-            LOOKBOOK
-          </button>
-        </div>
+          
+        
+        <img
+            src={logo1}  // replace with your logo path
+            alt="Reap Capital"
+            className="w-12 h-auto rounded-[2px] " 
+         
+  onClick={goToHero}
+/>
+</div>
 
         {/* Social Media Icons */}
         <div className="flex gap-4">
           {/* LinkedIn */}
           <a
-            href="#"
+            href="http://linkedin.com/in/nayan-kawalkar-164725352"
             className="w-10 h-10 rounded-xl flex items-center justify-center transition-all duration-300 hover:-translate-y-1"
           >
             <svg className="w-8 h-8 fill-[#c3cad1] hover:fill-[#0228d0] transition-all duration-300" viewBox="0 0 24 24">
@@ -138,7 +162,7 @@ export default function Header() {
 
           {/* GitHub */}
           <a
-            href="#"
+            href="https://github.com/Nayan-hub-nayan"
             className="w-10 h-10 rounded-xl flex items-center justify-center transition-all duration-300 hover:-translate-y-1"
           >
             <svg className="w-8 h-8 fill-white hover:fill-gray-400 transition-all duration-300" viewBox="0 0 24 24">
@@ -148,7 +172,7 @@ export default function Header() {
 
           {/* X (Twitter) */}
           <a
-        href="#"
+        href="https://x.com/KawalkarNa61162"
         className="w-10 h-10  rounded-xl flex items-center justify-center 
                    hover:bg-[#c3cad1] transition-all duration-300 hover:-translate-y-1"
       >
@@ -159,7 +183,7 @@ export default function Header() {
 
           {/* Instagram */}
           <a
-            href="#"
+            href="https://www.instagram.com/genex.oo?igsh=Z3ZpeXYzbXVkMTF5"
             className="group w-10 h-10 rounded-xl flex items-center justify-center transition-all duration-300 hover:-translate-y-1"
           >
             <svg className="w-8 h-8 transition-all duration-300" viewBox="0 0 24 24">
@@ -200,7 +224,7 @@ export default function Header() {
                   <button onClick={() => scrollToSection('team')} className="block w-full text-[18px] text-black font-medium text-center py-3 rounded-lg hover:bg-gray-200 transition-colors">
                     Team
                   </button>
-                  <button onClick={() => scrollToSection('contact')} className="block w-full text-[18px] text-black font-medium text-center py-3 rounded-lg hover:bg-gray-200 transition-colors">
+                  <button onClick={goToContact} className="block w-full text-[18px] text-black font-medium text-center py-3 rounded-lg hover:bg-gray-200 transition-colors">
                     Contact
                   </button>
                 </div>

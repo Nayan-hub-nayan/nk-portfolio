@@ -17,16 +17,16 @@ export default function Services() {
 
 
   return (
-<div className="relative min-h-screen bg-gradient-to-r from-[#1c1b1b] via-black to-black  overflow-hidden pt-[140px] sm:pt-[140px] md:pt-[160px] lg:pt-[80px] pb-[60px]"
+<section id='about' className="relative min-h-screen bg-gradient-to-r from-[#1c1b1b] via-black to-black  overflow-hidden pt-[80px] sm:pt-[140px] md:pt-[160px] lg:pt-[80px] pb-[40px]"
    >
-    <div className=" relative max-w-[1280px] mx-auto px-2 sm:px-5 md:px-5 lg:px-5 sm:max-w-[810px] md:max-w-[810px] lg:max-w-[1280px]">      
+    <div className=" relative max-w-[1280px] mx-auto px-4 sm:px-5 md:px-5 lg:px-5 sm:max-w-[810px] md:max-w-[810px] lg:max-w-[1280px]">      
           
           
-    <div className="grid grid-cols-1 lg:grid-cols-2 gap-0 items-stretch">
+    <div className="grid grid-cols-1 lg:grid-cols-2 leading-tight items-stretch">
           {/* Header Name */}
           <div className="relative h-full justify-start items-start text-start">
           <h1 className=" mb-12">
-          <div className="text-white text-[64px] md:text-6xl lg:text-8xl font-runiga tracking- leading-tight   opacity-0 animate-slideUp" style={{ animationDelay: '2s', animationFillMode: 'forwards' }}>
+          <div className="text-white text-[48px] md:text-6xl lg:text-8xl font-runiga tracking- leading-tight   opacity-0 animate-slideUp" style={{ animationDelay: '2s', animationFillMode: 'forwards' }}>
             
             Nayan
           <br/>
@@ -41,7 +41,7 @@ export default function Services() {
           <div className="relative h-full justify-start items-start text-start">
           <h1 className="mb-12 text-white text-[22px] md:text-2xl font-runiga tracking-wider">
   <div
-    className="mb-4 opacity-0 animate-slideUp"
+    className="mb-4 opacity-0 animate-slideUp "
     style={{ animationDelay: "2s", animationFillMode: "forwards" }}
   >
     I’m Nayan Lawalkar, a passionate Full Stack and App Developer with 2+ years of
@@ -207,7 +207,7 @@ export default function Services() {
           animation: curtainReveal 1s cubic-bezier(0.65, 0, 0.35, 1) forwards;
         }
       `}</style>
-    </div>
+    </section>
 
     
   );

@@ -29,7 +29,7 @@ const ShutterTransition = ({ children }) => {
         trigger: container,
         start: "top top",
         end: "+=200%",
-        scrub: 2,
+        scrub: 4,
         pin: true,
         anticipatePin: 1,
         invalidateOnRefresh: true, // 🔑 recalc on resize

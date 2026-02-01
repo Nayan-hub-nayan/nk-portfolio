@@ -15,10 +15,10 @@ export default function FurnitureLanding() {
 
   return (
     
-    <div className="relative min-h-screen bg-gradient-to-r from-[#1c1b1b] via-black to-black  overflow-hidden"
+    <section id='hero' className="relative min-h-screen bg-gradient-to-r from-[#1c1b1b] via-black to-black  overflow-hidden"
    >
             <div
-  className={`absolute bottom-[50px] left-1/2 -translate-x-1/2 text-center z-[100]
+  className={`hidden md:block absolute bottom-[50px] left-1/2 -translate-x-1/2 text-center z-[100]
   transition-opacity duration-300
   ${hideIndicator ? "opacity-0" : "opacity-100"}`}
 >
@@ -101,24 +101,24 @@ export default function FurnitureLanding() {
       <div className="relative z-10 flex flex-col items-center justify-center 
      
       
-        pl-0  pr-0 pt-40
+        pl-8  pr-8 pt-44
            sm:pl-[1px] sm:pr-[1px] sm:pt-[120px] sm: pb-[120px]
 
           /* Medium (md) */
           md:pr-[28px] md:pl-[30px] md:pt-[120px] md:pb-[120px]
           /* Large (lg) */
          lg:pt-[170px] lg:pb-[140px] lg:pr-[40px] lg:pl-[40px] lg:rounded-bl-[50px] lg:rounded-br-[50px]">
-        <h1 className="text-center mb-12">
-          <div className="text-white text-8xl md:text-9xl font-serif tracking-wider mb-4  opacity-0 animate-slideUp" style={{ animationDelay: '2s', animationFillMode: 'forwards' }}>
+        <h1 className="text-center mb-20 md:mb-12">
+          <div className="text-white text-6xl md:text-9xl font-serif tracking-wider mb-4  opacity-0 animate-slideUp" style={{ animationDelay: '2s', animationFillMode: 'forwards' }}>
             DESIGN
           </div>
-          <div className="text-white text-8xl md:text-9xl font-serif tracking-wider opacity-0 animate-slideUp" style={{ animationDelay: '2.2s', animationFillMode: 'forwards' }}>
+          <div className="text-white text-7xl md:text-9xl font-serif tracking-wider opacity-0 animate-slideUp" style={{ animationDelay: '2.2s', animationFillMode: 'forwards' }}>
             WEBSITE
           </div>
         </h1>
 
         <div className=" transition-all duration-300 opacity-0 animate-slideUp" style={{ animationDelay: '2.4s', animationFillMode: 'forwards' }}>
-        < GradientButton />
+        < GradientButton  />
         </div>
        
       </div>
@@ -203,7 +203,7 @@ export default function FurnitureLanding() {
           animation: curtainReveal 1s cubic-bezier(0.65, 0, 0.35, 1) forwards;
         }
       `}</style>
-    </div>
+    </section>
 
     
   );
