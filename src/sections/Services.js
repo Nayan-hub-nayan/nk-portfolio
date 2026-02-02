@@ -1,6 +1,5 @@
 import React, { useState , useRef} from 'react';
 import { Heart, MessageCircle, ExternalLink } from 'lucide-react';
-import arrow from "../assets/image/arrow-right.png"
 import web1 from '../assets/images/web1.avif'
 import web2 from '../assets/images/web1.webp'
 import web3 from '../assets/images/web3.webp'

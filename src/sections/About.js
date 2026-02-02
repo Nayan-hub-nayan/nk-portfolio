@@ -1,18 +1,8 @@
 import React, { useState } from 'react';
 import { Heart, MessageCircle, ExternalLink } from 'lucide-react';
-import arrow from "../assets/image/arrow-right.png"
 
 export default function Services() {
-  const [likes, setLikes] = useState({ card1: 223, card2: 156, card3: 342 });
-  const [liked, setLiked] = useState({ card1: false, card2: false, card3: false });
 
-  const handleLike = (cardId) => {
-    setLiked(prev => ({ ...prev, [cardId]: !prev[cardId] }));
-    setLikes(prev => ({ 
-      ...prev, 
-      [cardId]: prev[cardId] + (liked[cardId] ? -1 : 1) 
-    }));
-  };
 
 
 
@@ -39,24 +29,30 @@ export default function Services() {
           {/* ================= Description ================= */}
           <div className="relative  overflow-hidden h-full flex justify-center items-center">
           <div className="relative h-full justify-start items-start text-start">
-          <h1 className="mb-12 text-white text-[22px] md:text-2xl font-runiga tracking-wider">
+          <h1 className="mb-12 text-white text-[20px] md:text-[22px] font-runiga tracking-wider">
   <div
     className="mb-4 opacity-0 animate-slideUp "
     style={{ animationDelay: "2s", animationFillMode: "forwards" }}
   >
-    I’m Nayan Lawalkar, a passionate Full Stack and App Developer with 2+ years of
-    experience building seamless digital experiences. I love solving real-world
-    problems through clean, scalable code and modern technologies.
-  </div>
+    I am a full-stack developer with 2+ years of experience specializing in the MERN stack.
+I build scalable, user-friendly web applications with React, Next.js, and modern UI tools.
+I’m skilled in Node.js, Express, MongoDB, and creating clean, reliable APIs.
+I also work with Framer and Figma to design smooth, intuitive user interfaces.
+My projects include workflow automation, scheduling systems, and claim management tools. 
+</div>
 
-  <div
-    className="mb-4 opacity-0 animate-slideUp"
+<div
+    className="mb-4 opacity-0 animate-slideUp "
     style={{ animationDelay: "2s", animationFillMode: "forwards" }}
   >
-    As a UI/UX Designer, I focus on creating interfaces that are not only
-    visually appealing but also intuitive and user-friendly. My goal is to
-    bridge the gap between design and development to deliver impactful products.
-  </div>
+I focus on simplifying complex problems through efficient engineering and design.
+I have hands-on experience with cloud platforms like AWS and Azure.
+I enjoy exploring new technologies, including system design and generative AI.
+As a community contributor, I’ve organized 50+ meetups and mentored many developers.
+I’m passionate about building impactful digital experiences and constantly improving my craft.
+ </div>
+
+ 
 </h1>
 
              

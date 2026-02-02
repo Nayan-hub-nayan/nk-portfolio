@@ -101,8 +101,8 @@ export default function FurnitureLanding() {
       <div className="relative z-10 flex flex-col items-center justify-center 
      
       
-        pl-8  pr-8 pt-44
-           sm:pl-[1px] sm:pr-[1px] sm:pt-[120px] sm: pb-[120px]
+        pl-8  pr-8 pt-60
+           sm:pl-[1px] sm:pr-[1px] sm:pt-[120px] sm: pb-[100px]
 
           /* Medium (md) */
           md:pr-[28px] md:pl-[30px] md:pt-[120px] md:pb-[120px]

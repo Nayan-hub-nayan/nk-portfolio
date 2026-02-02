@@ -22,7 +22,15 @@ const Footer = () => {
       }, 0);
   }
   return (
-    <footer className="relative flex  w-full h-screen bg-gradient-to-r from-[#1c1b1b] via-black to-black  text-white overflow-hidden flex-col items-center justify-between">
+    <footer className="relative flex  w-full h-screen bg-gradient-to-r from-[#1c1b1b] via-black to-black  text-white overflow-hidden flex-col items-center justify-between pt
+     pl-8  pr-8 pt-[100px]
+           sm:pl-[1px] sm:pr-[1px] sm:pt-[60px] sm:pb-[6px]
+
+          /* Medium (md) */
+          md:pr-[28px] md:pl-[30px] md:pt-[60px] md:pb-[8px]
+          /* Large (lg) */
+         lg:pt-[80px] lg:pb-[10px] lg:pr-[40px] lg:pl-[40px] 
+         ">
      
      
        {/* Loading Screen - Plain Dark Background with Logo */}
@@ -116,12 +124,7 @@ const Footer = () => {
       <div className="relative z-10 max-w-[1280px] mx-auto px-5 sm:px-5 md:px-5 lg:px-5 w-full">
         
         {/* Top Badge */}
-        <div className="text-center mb-8 opacity-0 animate-fadeIn" style={{ animationDelay: '0.3s', animationFillMode: 'forwards' }}>
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 backdrop-blur-sm">
-            <span className="text-blue-400 text-sm">🚀</span>
-            <span className="text-gray-400 text-sm">Building the Future of Creative Tools</span>
-          </div>
-        </div>
+       
 
         {/* Main Heading */}
         <h1 className="text-center mb-6 opacity-0 animate-slideUp" style={{ animationDelay: '0.5s', animationFillMode: 'forwards' }}>

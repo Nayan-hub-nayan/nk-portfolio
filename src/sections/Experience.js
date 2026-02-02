@@ -9,51 +9,51 @@ export default function ExperienceJourney() {
     {
       id: 1,
       icon: Briefcase,
-      date: '2023 - Present',
-      title: 'Senior Full Stack Developer',
-      company: 'Tech Innovations Inc.',
-      description: 'Leading the development of scalable web applications and mentoring junior developers. Architected microservices infrastructure serving 1M+ users with 99.9% uptime.',
-      skills: ['React', 'Node.js', 'AWS', 'Docker', 'Kubernetes'],
+      date: '2024 - Present',
+      title: 'Web Designing',
+      company: 'Windesign Labs',
+      description: 'Built responsive and interactive user interfaces for various clients. Collaborated with designers to create pixel-perfect implementations and smooth animations.',
+      skills: ['Framer', 'Figma'],
       color: 'from-blue-500 to-purple-500'
     },
     {
       id: 2,
       icon: Rocket,
-      date: '2021 - 2023',
+      date: '2024 - 2025',
       title: 'Full Stack Developer',
-      company: 'Digital Solutions Co.',
+      company: 'KodeKalp Pvt. Ltd',
       description: 'Developed and maintained multiple client projects using modern web technologies. Improved application performance by 40% through code optimization and caching strategies.',
-      skills: ['Vue.js', 'Python', 'PostgreSQL', 'Redis'],
+      skills: [ 'Node.js','Expres.js', 'AWS', 'Docker', 'Kubernetes', 'PostgreSQL & MongoDB', ],
       color: 'from-purple-500 to-pink-500'
     },
     {
       id: 3,
       icon: Code,
-      date: '2019 - 2021',
+      date: '2023 - 2024',
       title: 'Frontend Developer',
-      company: 'Creative Web Studio',
+      company: 'KodeKalp Pvt. Ltd',
       description: 'Built responsive and interactive user interfaces for various clients. Collaborated with designers to create pixel-perfect implementations and smooth animations.',
-      skills: ['JavaScript', 'HTML/CSS', 'SASS', 'jQuery'],
+      skills: ['React', 'Next','JavaScript', 'SASS', 'jQuery'],
       color: 'from-pink-500 to-red-500'
     },
     {
       id: 4,
       icon: GraduationCap,
-      date: '2015 - 2019',
-      title: "Bachelor's in Computer Science",
+      date: '2022 - 2025',
+      title: "Deploma in Computer Science",
       company: 'University of Technology',
-      description: 'Graduated with honors, specializing in software engineering and web development. Completed a capstone project on machine learning applications in web analytics.',
-      skills: ['Algorithms', 'Data Structures', 'Web Dev', 'ML'],
+      description: 'Semi-Graduated with honors, specializing in software engineering and web development. Completed a capstone project on machine learning applications in web analytics.',
+      skills: ['Algorithms', 'Data Structures', 'Web Dev', 'Github'],
       color: 'from-orange-500 to-yellow-500'
     },
     {
       id: 5,
       icon: Award,
-      date: '2018',
+      date: '2024',
       title: 'First Internship',
-      company: 'StartUp Labs',
+      company: 'SSIT Pvt. Ltd.',
       description: 'Gained hands-on experience in agile development and version control. Contributed to building a customer feedback platform used by 50+ companies.',
-      skills: ['Git', 'Agile', 'REST APIs', 'MongoDB'],
+      skills: ['Git', 'Python','Django', 'REST APIs', 'HTML/CSS' ],
       color: 'from-yellow-500 to-green-500'
     }
   ];
@@ -83,7 +83,7 @@ export default function ExperienceJourney() {
   }, []);
 
   return (
-    <div className="relative min-h-screen bg-gradient-to-r from-[#1c1b1b] via-black to-black overflow-hidden pt-[60px] sm:pt-[140px] md:pt-[160px] lg:pt-[80px] pb-[30px] sm:pb-[60px] md:pb-[60px] shadow-[0_30px_120px_rgba(239,0,0,0.35)]">
+    <section id='experience' className="relative min-h-screen bg-gradient-to-r from-[#1c1b1b] via-black to-black overflow-hidden pt-[60px] sm:pt-[140px] md:pt-[160px] lg:pt-[80px] pb-[30px] sm:pb-[60px] md:pb-[60px] shadow-[0_30px_120px_rgba(239,0,0,0.35)]">
       
       <div className="relative max-w-[1280px] mx-auto px-5 sm:px-5 md:px-5 lg:px-5 sm:max-w-[810px] md:max-w-[810px] lg:max-w-[1280px]">
         
@@ -265,6 +265,6 @@ export default function ExperienceJourney() {
           animation: slideUp 0.8s ease-out;
         }
       `}</style>
-    </div>
+    </section>
   );
 }
