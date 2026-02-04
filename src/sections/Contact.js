@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Code2, Database, Globe, Terminal, CheckCircle, Send } from 'lucide-react';
+import emailjs from 'emailjs-com';
 
 export default function Contact() {
   const [errors, setErrors] = useState({});
@@ -51,7 +52,7 @@ export default function Contact() {
     try {
       const templateParams = {
         from_name: 'Portfolio Contact',
-        to_email: 'your-email@example.com', // Replace with your email
+        to_email: 'kawalkarnayan07@gmail.com', // Replace with your email
         subject: "New Project Inquiry from Portfolio",
         name: formData.name,
         email: formData.email,
@@ -73,12 +74,13 @@ Message: ${formData.message}`
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          service_id: 'YOUR_SERVICE_ID', // Replace with your EmailJS Service ID
-          template_id: 'YOUR_TEMPLATE_ID', // Replace with your EmailJS Template ID
-          user_id: 'YOUR_PUBLIC_KEY', // Replace with your EmailJS Public Key
-          template_params: templateParams
+          service_id: 'service_1vwb4jz',       // ✔ Your EmailJS Service ID
+          template_id: 'template_d0tzgbo',    // ✔ Your EmailJS Template ID
+          user_id: 'MgFJ2C2MNo_B5mb2T',       // ✔ Your EmailJS Public Key
+          template_params: templateParams     // ✔ Params for your template
         })
       });
+      
 
       if (response.ok) {
         setIsLoading(false);
