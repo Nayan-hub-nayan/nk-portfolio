@@ -40,6 +40,10 @@ body {
     font-family: "Sacrifice";
     src: url("./assets/fonts/SacrificeDemo-8Ox1B.ttf") format("truetype");
   }
+  @font-face {
+    font-family: "valty";
+    src: url("./assets/fonts/Valty.otf") format("opentype");
+  }
   
   @keyframes scroll {
     to {

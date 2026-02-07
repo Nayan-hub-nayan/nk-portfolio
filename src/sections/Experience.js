@@ -119,12 +119,12 @@ export default function ExperienceJourney() {
               >
                 
                 {/* Content Card */}
-                <div className={`w-full md:w-[calc(50%-40px)] transition-all duration-1000 ${
+                <div className={`w-full md:w-[calc(50%-40px)] transition-all duration-500 ${
                   isVisible 
                     ? 'opacity-100 translate-y-0' 
                     : 'opacity-0 translate-y-20'
                 }`}
-                style={{ transitionDelay: `${index * 150}ms` }}>
+                style={{ transitionDelay: `${index * 20}ms` }}>
                   
                   <div className="relative bg-black ring-[0.3px] ring-white/50 ring-inset rounded-2xl overflow-hidden group hover:ring-white/80 transition-all duration-500">
                     
@@ -176,12 +176,12 @@ export default function ExperienceJourney() {
                 </div>
 
                 {/* Center Icon */}
-                <div className={`relative z-20 flex-shrink-0 transition-all duration-1000 ${
+                <div className={`relative z-20 flex-shrink-0 transition-all duration-500 ${
                   isVisible 
                     ? 'opacity-100 scale-100' 
                     : 'opacity-0 scale-50'
                 }`}
-                style={{ transitionDelay: `${index * 140 }ms` }}>
+                style={{ transitionDelay: `${index * 20 }ms` }}>
                   
                   <div className="relative w-16 h-16 md:w-20 md:h-20">
                     {/* Outer Glow Ring */}

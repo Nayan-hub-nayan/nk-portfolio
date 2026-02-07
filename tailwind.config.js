@@ -28,6 +28,14 @@ module.exports = {
       animation: {
         'slide-in': 'slide-in 0.3s ease-out',
       },
+      fontFamily: {
+        eagle: ["EagleHorizonP", "sans-serif"],
+        gradzy: ["Gradzy", "sans-serif"],
+        kugile: ["Kugile", "sans-serif"],
+        runiga: ["Runiga", "sans-serif"],
+        sacrifice: ["SacrificeDemo", "sans-serif"],
+        valty: ["Valty", "sans-serif"],
+      },
     },
 
   },

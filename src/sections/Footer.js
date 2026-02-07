@@ -154,10 +154,10 @@ const Footer = () => {
        
 
       </div>
-        <div className='relative w-full text-sm sm:text-xl md:text-[18px] font-runiga text-white md:flex md:justify-between z-10 text-center px-8  mb-8 sm:mb-12'>
-          <a href='mailto:kawalkar@gmail.com' className='text-blue-900'>nayan@design.com</a>
-          <h1 >©<span  className='text-blue-900'>2026</span></h1>
-          <h1 className='text-blue-900' ><span className='  text-gray-400'>By    </span >  Nayan Kawalkar</h1>
+        <div className='relative w-full text-sm sm:text-xl md:text-[18px]  text-white md:flex md:justify-between z-10 text-center px-8  mb-8 sm:mb-12'>
+          <a href='mailto:kawalkarnayan07@gmail.com' className='text-white'>nayan@design.com</a>
+          <h1 >©<span  className='text-white'>2026</span></h1>
+          <h1 className='text-whitw' ><span className='  text-gray-400'>By    </span >  Nayan Kawalkar</h1>
         </div>
        
 

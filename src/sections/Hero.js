@@ -112,9 +112,14 @@ export default function FurnitureLanding() {
           <div className="text-white text-6xl md:text-9xl font-serif tracking-wider mb-4  opacity-0 animate-slideUp" style={{ animationDelay: '2s', animationFillMode: 'forwards' }}>
             DESIGN
           </div>
-          <div className="text-white text-7xl md:text-9xl font-serif tracking-wider opacity-0 animate-slideUp" style={{ animationDelay: '2.2s', animationFillMode: 'forwards' }}>
-            WEBSITE
-          </div>
+          <div class="ticker w-full ">
+  <div class="ticker-inner text-white text-7xl md:text-9xl font-valty tracking-wider ">
+    <div class="item text-[#e930dd]">Website</div>
+    <div class="item text-[#2eac6f]">APPS</div>
+    <div class="item text-[#e23d37]">Agents</div>
+  </div>
+</div>
+
         </h1>
 
         <div className=" transition-all duration-300 opacity-0 animate-slideUp" style={{ animationDelay: '2.4s', animationFillMode: 'forwards' }}>
@@ -127,7 +132,42 @@ export default function FurnitureLanding() {
 
       <style jsx>{`
       
-        
+       .ticker {
+  width: 100%;        /* full width */
+  height: 100px;      /* height of one line */
+  overflow: hidden;
+  position: relative;
+  display: flex;      /* to center inner content */
+  justify-content: center;  /* center horizontally */
+}
+
+.ticker-inner {
+  display: flex;
+  flex-direction: column;
+  animation: tickerMove 6s infinite;
+}
+
+.item {
+  height: 100px;  /* same as ticker height */
+  display: flex;
+  align-items: center;
+  justify-content: center;  /* centers text */
+}
+
+
+/* SLIDE ANIMATION */
+@keyframes tickerMove {
+  0%   { transform: translateY(0); }
+  25%  { transform: translateY(0); }
+
+  33%  { transform: translateY(-100px); }
+  58%  { transform: translateY(-100px); }
+
+  66%  { transform: translateY(-200px); }
+  91%  { transform: translateY(-200px); }
+
+  100% { transform: translateY(0); }
+}
 
        
         @keyframes pulse {
