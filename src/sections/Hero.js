@@ -43,7 +43,7 @@ export default function FurnitureLanding() {
           style={{
             backgroundImage: `
               linear-gradient(to right, rgba(255,255,255,0.05) 1px, transparent 1px),
-              linear-gradient(to bottom, rgba(255,255,255,0.05) 1px, transparent 1px)
+              linear-gradient(to bottom, rgba(255,255,255,0.05) 1px, transparent 1px)G
             `,
             backgroundSize: '80px 80px'
           }}
@@ -113,7 +113,7 @@ export default function FurnitureLanding() {
             DESIGN
           </div>
           <div class="ticker w-full ">
-  <div class="ticker-inner text-white text-7xl md:text-9xl font-valty tracking-wider ">
+  <div class="ticker-inner text-white text-8xl md:text-9xl font-valty tracking-wider ">
     <div class="item text-[#e930dd]">Website</div>
     <div class="item text-[#2eac6f]">APPS</div>
     <div class="item text-[#e23d37]">Agents</div>
