@@ -2,17 +2,71 @@ import React, { useState } from 'react';
 import { Heart, MessageCircle, ExternalLink } from 'lucide-react';
 import Arrow from '../assets/arow1.png'
 import { Card1, Card2, Card3 } from '../component/ProjectCard';
+import web1 from "../assets/images/web1.webp"
+import web from '../assets/images/web1.avif'
+import web2 from '../assets/images/web1.webp'
+import web3 from '../assets/images/web3.webp'
+import web4 from '../assets/images/web4.webp'
+import mobileimg from '../assets/images/mobile.webp'
 export default function LatestProject() {
-  const [likes, setLikes] = useState({ card1: 223, card2: 156, card3: 342 });
-  const [liked, setLiked] = useState({ card1: false, card2: false, card3: false });
 
-  const handleLike = (cardId) => {
-    setLiked(prev => ({ ...prev, [cardId]: !prev[cardId] }));
-    setLikes(prev => ({ 
-      ...prev, 
-      [cardId]: prev[cardId] + (liked[cardId] ? -1 : 1) 
-    }));
-  };
+
+  const projects = [
+    {
+      image: web1,
+      ownerIcon: "owner1.png",
+      name:'Rehana studio',
+      description: "Description for project 1",
+      url: "https://reapcapital.in",
+      likes: 12,
+      time:"1d"
+    },
+    {
+      image: web,
+      ownerIcon: "owner2.png",
+      name:'Rehana studio',
+
+      description: "Description for project 2",
+      url: "https://reapcapital.in",
+      likes: 34,
+      time:"7d"
+
+    },
+    {
+      image: web3,
+      ownerIcon: "owner3.png",
+      name:'Rehana studio',
+
+      description: "Description for project 3",
+      url: "https://reapcapital.in",
+      likes: 28,
+      time:"13d"
+
+    },
+    {
+      image: web3,
+      ownerIcon: "owner4.png",
+      name:'Rehana studio',
+
+      description: "Description for project 4",
+      url: "https://reapcapital.in",
+      likes: 51,
+      time:"10d"
+
+    },
+    {
+      image: web4,
+      ownerIcon: "owner5.png",
+      name:'Rehana studio',
+
+      description: "Description for project 5",
+      url: "https://example.com/project5",
+      likes: 19,
+      time:"8d"
+
+    }
+  ];
+  
 
 
 
@@ -98,23 +152,23 @@ Projects          </div></h1>
           
           {/* Card 1 - HiKeys Synthesizer */}
           <div className="flex md:flex-col justify-center gap-8 relative w-full">
-          <Card1/>
+          <Card1 project={projects[0] }/>
 
           {/* Card 1 - HiKeys Synthesizer */}
-          <Card2/>
+          <Card1 project={projects[1] }/>
           </div>
           
           
           {/* Card 2 - Red Monster Design */}
-         <Card3/>
+         <Card3 project={projects[0] }/>
 
           {/* Card 3 - 3D Geometric Design */}
           <div className="flex md:flex-col justify-center gap-8 relative w-full">
 
-          <Card2/>
+          <Card1 project={projects[3] }/>
 
           {/* Card 1 - HiKeys Synthesizer */}
-          <Card1/>
+          <Card1 project={projects[4] }/>
       </div>
 
         </div>
@@ -148,9 +202,9 @@ Projects          </div></h1>
          <div className="md:hidden space-y-5 px-6 w-full"> 
           
           {/* Card 1 - HiKeys Synthesizer */}
-          <Card1/>
+          <Card1 project={projects[4] }/>
           <Card3/>
-          <Card2/>
+          <Card1 project={projects[1] }/>
          
 
         </div>

@@ -3,9 +3,9 @@ import { Heart, MessageCircle, ExternalLink } from 'lucide-react';
 import Arrow from '../assets/arow1.png'
 
 
-
-export const Card1=()=>{
-  const [likes, setLikes] = useState({ card1: 223,});
+//basic white card
+export const Card1=({ project = {}  })=>{
+  const [likes, setLikes] = useState({ card1: project.likes,});
   const [liked, setLiked] = useState({ card1: false,});
 
   const handleLike = (cardId) => {
@@ -18,52 +18,31 @@ export const Card1=()=>{
   return(
 
     <div className="group w-full h-fit bg-gradient-to-br from-zinc-900 to-black rounded-3xl overflow-hidden border border-zinc-800 hover:border-zinc-700 transition-all hover:shadow-2xl hover:shadow-white/5">
-      <div className="relative bg-white p-8 aspect-[4/3] flex items-center justify-center">
-        <div className="absolute top-4 left-4 text-black text-sm font-medium">HiKeys—1977</div>
-        <div className="absolute top-4 right-4 text-xs text-gray-400">Concept & Design</div>
+      <div className="relative bg-white aspect-[4/3] flex items-center justify-center">
         
         {/* Synthesizer Image */}
         <div className="w-full ">
-          <div className="bg-gray-200 rounded-lg p-6 shadow-lg">
+          <img alt='' src={project.image} className=" w-full h-[250px] " />
             {/* Synth Controls */}
-            <div className="flex gap-2 mb-4">
-              {[...Array(5)].map((_, i) => (
-                <div key={i} className="w-full h-8 rounded-full border-2 border-gray-400 bg-gray-100"></div>
-              ))}
-            </div>
-            {/* Display */}
-            <div className="bg-black text-green-400 text-xs font-mono p-2 rounded mb-4 flex items-center gap-2">
-              <span>■ ●●●●</span>
-            </div>
-            {/* Keys */}
-            <div className="flex gap-0.5">
-              {[...Array(12)].map((_, i) => (
-                <div key={i} className={`${i % 2 === 0 ? 'h-16 bg-white' : 'h-10 bg-gray-800'} flex-1 border border-gray-300 rounded-b`}></div>
-              ))}
-            </div>
-          </div>
+           
         </div>
         
-        {/* Large Text Overlay */}
-        <div className="absolute bottom-0 left-0 right-0 text-9xl font-black leading-none text-black" style={{ fontFamily: 'Impact, sans-serif' }}>
-          HK77
-        </div>
-        
-        {/* Plus Icons */}
-        <div className="absolute bottom-6 left-6 text-3xl font-bold text-black">++</div>
       </div>
       
       <div className="p-6 space-y-4">
         <div className="flex items-center gap-3">
-          <div className="text-2xl">++</div>
+          <div className="w-10 h-10 bg-gradient-to-br from-zinc-600 to-zinc-800 rounded-full flex items-center justify-center text-xl font-bold">
+            R
+          </div>
           <div>
-            <div className="font-semibold">++hellohello</div>
-            <div className="text-sm text-gray-400">3h</div>
+            <div className="font-semibold text-zinc-400">{project.name}</div>
+            <div className="font-semibold text-zinc-600">{project.description}</div>
+
           </div>
         </div>
         
-        <a href="#" className="block text-sm text-blue-400 hover:text-blue-300 transition-colors">
-          hikeys1977.com
+        <a href={project.url} className="block text-sm text-blue-400 hover:text-blue-300 transition-colors">
+          {project.url}
         </a>
         
         <div className="flex items-center gap-6 pt-2">
@@ -81,6 +60,8 @@ export const Card1=()=>{
             <MessageCircle size={20} />
             <span>47</span>
           </button>
+          <div className="text-sm text-gray-400">{project.time}</div>
+
         </div>
       </div>
     </div>    
@@ -88,6 +69,7 @@ export const Card1=()=>{
   )
 }
 
+//basic black card
 export const Card2=()=>{
   const [likes, setLikes] = useState({ card1: 223, card2: 156, card3: 342 });
   const [liked, setLiked] = useState({ card1: false, card2: false, card3: false });
