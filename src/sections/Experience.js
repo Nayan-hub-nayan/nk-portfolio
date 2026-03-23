@@ -23,7 +23,7 @@ export default function ExperienceJourney() {
       title: 'Full Stack Developer',
       company: 'KodeKalp Pvt. Ltd',
       description: 'Developed and maintained multiple client projects using modern web technologies. Improved application performance by 40% through code optimization and caching strategies.',
-      skills: [ 'Node.js','Expres.js', 'AWS', 'Docker', 'Kubernetes', 'PostgreSQL & MongoDB', ],
+      skills: ['Node.js', 'Expres.js', 'AWS', 'Docker', 'Kubernetes', 'PostgreSQL & MongoDB',],
       color: 'from-purple-500 to-pink-500'
     },
     {
@@ -33,7 +33,7 @@ export default function ExperienceJourney() {
       title: 'Frontend Developer',
       company: 'KodeKalp Pvt. Ltd',
       description: 'Built responsive and interactive user interfaces for various clients. Collaborated with designers to create pixel-perfect implementations and smooth animations.',
-      skills: ['React', 'Next','JavaScript', 'SASS', 'jQuery'],
+      skills: ['React', 'Next', 'JavaScript', 'SASS', 'jQuery'],
       color: 'from-pink-500 to-red-500'
     },
     {
@@ -53,7 +53,7 @@ export default function ExperienceJourney() {
       title: 'First Internship',
       company: 'SSIT Pvt. Ltd.',
       description: 'Gained hands-on experience in agile development and version control. Contributed to building a customer feedback platform used by 50+ companies.',
-      skills: ['Git', 'Python','Django', 'REST APIs', 'HTML/CSS' ],
+      skills: ['Git', 'Python', 'Django', 'REST APIs', 'HTML/CSS'],
       color: 'from-yellow-500 to-green-500'
     }
   ];
@@ -84,9 +84,9 @@ export default function ExperienceJourney() {
 
   return (
     <section id='experience' className="relative min-h-screen bg-gradient-to-r from-[#1c1b1b] via-black to-black overflow-hidden pt-[60px] sm:pt-[140px] md:pt-[160px] lg:pt-[80px] pb-[30px] sm:pb-[60px] md:pb-[60px] shadow-[0_30px_120px_rgba(239,0,0,0.35)]">
-      
+
       <div className="relative max-w-[1280px] mx-auto px-5 sm:px-5 md:px-5 lg:px-5 sm:max-w-[810px] md:max-w-[810px] lg:max-w-[1280px]">
-        
+
         {/* Header */}
         <h1 className="text-center items-center mb-12">
           <div className="text-white text-6xl md:text-9xl font-runiga tracking-wider mb-4 opacity-0 animate-slideUp" style={{ animationDelay: '0.5s', animationFillMode: 'forwards' }}>
@@ -99,7 +99,7 @@ export default function ExperienceJourney() {
 
         {/* Timeline Container */}
         <div className="relative flex flex-col gap-16 md:gap-24">
-          
+
           {/* Central Timeline Line */}
           <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-[2px] -translate-x-1/2">
             <div className="absolute inset-0 bg-gradient-to-b from-transparent via-white/20 to-transparent" />
@@ -117,17 +117,16 @@ export default function ExperienceJourney() {
                 ref={el => timelineRefs.current[index] = el}
                 className={`relative flex ${isLeft ? 'md:flex-row' : 'md:flex-row-reverse'} flex-col items-center gap-8`}
               >
-                
+
                 {/* Content Card */}
-                <div className={`w-full md:w-[calc(50%-40px)] transition-all duration-500 ${
-                  isVisible 
-                    ? 'opacity-100 translate-y-0' 
+                <div className={`w-full md:w-[calc(50%-40px)] transition-all duration-500 ${isVisible
+                    ? 'opacity-100 translate-y-0'
                     : 'opacity-0 translate-y-20'
-                }`}
-                style={{ transitionDelay: `${index * 20}ms` }}>
-                  
+                  }`}
+                  style={{ transitionDelay: `${index * 20}ms` }}>
+
                   <div className="relative bg-black ring-[0.3px] ring-white/50 ring-inset rounded-2xl overflow-hidden group hover:ring-white/80 transition-all duration-500">
-                    
+
                     {/* Hover Glow Effect */}
                     <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
                       <div className={`absolute inset-0 bg-gradient-to-br ${exp.color} opacity-10 blur-xl`} />
@@ -135,7 +134,7 @@ export default function ExperienceJourney() {
 
                     {/* Content */}
                     <div className="relative z-10 p-6 md:p-8">
-                      
+
                       {/* Date Badge */}
                       <div className="inline-flex items-center gap-2 mb-4">
                         <Calendar size={16} className="text-white/60" />
@@ -176,17 +175,16 @@ export default function ExperienceJourney() {
                 </div>
 
                 {/* Center Icon */}
-                <div className={`relative z-20 flex-shrink-0 transition-all duration-500 ${
-                  isVisible 
-                    ? 'opacity-100 scale-100' 
+                <div className={`relative z-20 flex-shrink-0 transition-all duration-500 ${isVisible
+                    ? 'opacity-100 scale-100'
                     : 'opacity-0 scale-50'
-                }`}
-                style={{ transitionDelay: `${index * 20 }ms` }}>
-                  
+                  }`}
+                  style={{ transitionDelay: `${index * 20}ms` }}>
+
                   <div className="relative w-16 h-16 md:w-20 md:h-20">
                     {/* Outer Glow Ring */}
                     <div className={`absolute inset-0 rounded-full bg-gradient-to-br ${exp.color} opacity-30 blur-xl animate-pulse`} />
-                    
+
                     {/* Main Icon Container */}
                     <div className={`relative w-full h-full rounded-full bg-gradient-to-br ${exp.color} p-[2px] group-hover:scale-110 transition-transform duration-500`}>
                       <div className="w-full h-full rounded-full bg-black flex items-center justify-center">
@@ -210,8 +208,8 @@ export default function ExperienceJourney() {
 
       {/* Background Effects */}
       <div className="absolute inset-0 opacity-60 pointer-events-none">
-        <div 
-          className="absolute inset-0" 
+        <div
+          className="absolute inset-0"
           style={{
             backgroundImage: `
               linear-gradient(to right, rgba(255,255,255,0.05) 1px, transparent 1px),
@@ -223,7 +221,7 @@ export default function ExperienceJourney() {
       </div>
 
       {/* Center Radial Glow */}
-      <div 
+      <div
         className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[1000px] pointer-events-none"
         style={{
           background: 'radial-gradient(circle, rgba(99,102,241,0.15) 0%, rgba(139,92,246,0.1) 40%, transparent 70%)',
@@ -233,7 +231,7 @@ export default function ExperienceJourney() {
       />
 
       {/* Secondary Accent Glow */}
-      <div 
+      <div
         className="absolute top-1/3 right-1/4 w-[600px] h-[600px] pointer-events-none"
         style={{
           background: 'radial-gradient(circle, rgba(236,72,153,0.1) 0%, transparent 60%)',
