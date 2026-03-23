@@ -25,21 +25,22 @@ import ShutterTransition from './components/ShutterTransition';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ScrollSmoother } from 'gsap/ScrollSmoother';
-
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
 
 function ReapCapital() {
- 
+
   return (
-    <div 
+    <div
       id="smooth-wrapper"
       className="  bg-gradient-to-r from-[#1c1b1b] via-black to-black text-black min-h-screen relative overflow-hidden justify-center items-center"
     >
-       {/* Header */}
-       <Header />
-      
+      {/* Header */}
+      <Header />
+
       <div id="smooth-content">
-       
+
 
         {/* Hero Section */}
         <Hero />
@@ -50,16 +51,20 @@ function ReapCapital() {
         <Technologies />
 
         <LatestProject />
-      <ExperienceJourney/>
+        <ExperienceJourney />
 
         {/* Shutter Transition: Services (top) reveals Footer (bottom) */}
         <ShutterTransition>
           <Services />
           <Footer />
         </ShutterTransition>
-         {/* Shutter Transition Container */}
-     
+        {/* Shutter Transition Container */}
+
       </div>
+      <ToastContainer
+        position="top-right"
+        autoClose={3000}
+      />
     </div>
   );
 }
@@ -107,9 +112,9 @@ body {
 function ReapCapitalSimple() {
   return (
     <div className="bg-[#FFFFFFF5] text-black min-h-screen relative overflow-hidden">
-     
- {/* Header */}
- <Header />
+
+      {/* Header */}
+      <Header />
       {/* Hero Section */}
       <Hero />
       <About />
@@ -126,7 +131,7 @@ function ReapCapitalSimple() {
         <Services />
         <Footer />
       </ShutterTransition>
-      
+
       <LatestProject />
 
     </div>
