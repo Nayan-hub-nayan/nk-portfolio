@@ -22,10 +22,5 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 .vercel
-<<<<<<< HEAD
 .dommy.schema
-=======
-.dommy.schema
-/frontend/.env
-/backend/.env
->>>>>>> db897be (set link with server)
+.env
