@@ -18,7 +18,8 @@ export default function LatestProject() {
 
   useEffect(() => {
     const fetchProjects = async () => {
-      const response = await fetch(`${process.env.BACKEND_URI}/api/projects`);
+
+      const response = await fetch(`${process.env.REACT_APP_BACKEND_URI}/api/projects`);
       const data = await response.json();
       setProjects(data.projects);
       setLoading(false);
